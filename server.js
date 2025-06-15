@@ -32,7 +32,7 @@ app.post('/submit-contact', (req, res) => {
       res.status(500).send('Error sending email');
     } else {
       console.log('Email sent: ' + info.response);
-      res.redirect('http://localhost:8000/thank-you.html?type=contact');
+      res.redirect(`${process.env.FRONTEND_URL}/thank-you.html?type=contact`);
     }
   });
 });
@@ -52,7 +52,7 @@ app.post('/submit-order', (req, res) => {
       res.status(500).send('Error sending email');
     } else {
       console.log('Email sent: ' + info.response);
-      res.redirect('http://localhost:8000/thank-you.html?type=order');
+      res.redirect(`${process.env.FRONTEND_URL}/thank-you.html?type=order`);
     }
   });
 });
@@ -72,11 +72,7 @@ app.post('/submit-review', (req, res) => {
       res.status(500).send('Error sending email');
     } else {
       console.log('Email sent: ' + info.response);
-      res.redirect('http://localhost:8000/thank-you.html?type=review');
+      res.redirect(`${process.env.FRONTEND_URL}/thank-you.html?type=review`);
     }
   });
-});
-
-app.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
 });
