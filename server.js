@@ -2,9 +2,15 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 const path = require('path');
+const cors = require('cors');
 
 dotenv.config();
 const app = express();
+
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  methods: ['POST'],
+}));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../client')));
